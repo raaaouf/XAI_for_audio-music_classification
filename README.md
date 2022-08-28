@@ -76,10 +76,10 @@ SHAP (SHapley Additive exPlanations) is a game theoretic approach to explain the
 ### Results
 - You can use the notebook *Local_XAI_for_MGR_.ipynb* to plot and analyse the results.
 - Statistical results showed that SHAP MFCC features contribution correlations are more related to the modele predictions
-- - We compared the XAI results and modele precision using mean contributions precision metric and in differnt iterations we found:
--- Classifier: à.95
--- SHAP: 0.86
--- LIME: 0.70
+- We compared the XAI results and modele precision using mean contributions precision metric and in differnt iterations we found:
+- - Classifier: à.95
+- - SHAP: 0.86
+- - LIME: 0.70
 - The experimental results do not show stronger attributions to classes using LIME this is because of its instable nature in nature (see report for more details).
 - Visual results can be prouved by choosing other parameters that are much relevent to the task ( see future work section in report).
 
