@@ -63,6 +63,7 @@ Contains a total of 10 genres, each genre contains 100 audio files
 
 ## PART 2 SHAP LIME for LOCAL XAI
 ### LIME:
+Lime is able to explain any black box classifier, with two or more classes. All we require is that the classifier implements a function that takes in raw text or a numpy array and outputs a probability for each class. Support for scikit-learn classifiers is built-in.
 
 ### SHAP:
 SHAP (SHapley Additive exPlanations) is a game theoretic approach to explain the output of any machine learning model. It connects optimal credit allocation with local explanations using the classic Shapley values from game theory and their related extensions
@@ -73,7 +74,14 @@ SHAP (SHapley Additive exPlanations) is a game theoretic approach to explain the
 - pip install LIME
 
 ### Results
-You can use the notebook *Local_XAI_for_MGR_.ipynb* to plot and analyse the results.
+- You can use the notebook *Local_XAI_for_MGR_.ipynb* to plot and analyse the results.
+- Statistical results showed that SHAP MFCC features contribution correlations are more related to the modele predictions
+- - We compared the XAI results and modele precision using mean contributions precision metric and in differnt iterations we found:
+-- Classifier: à.95
+-- SHAP: 0.86
+-- LIME: 0.70
+- The experimental results do not show stronger attributions to classes using LIME this is because of its instable nature in nature (see report for more details).
+- Visual results can be prouved by choosing other parameters that are much relevent to the task ( see future work section in report).
 
 
 
@@ -84,49 +92,4 @@ You can use the notebook *Local_XAI_for_MGR_.ipynb* to plot and analyse the resu
 ### Usage
 
 ### Results
-
-*it is highly recommended to use Google Colab Pro+ with GPU runtime and high RAM setup, more information at the beginning of the script!
-
-
-
-## Folder structure (will be created with the scripts):
-
-    XAI_spec_AudioMNIST				# root folder of the repository
-    ├──AudioMNIST-master				# downloaded dataset
-    |	├──data
-    |	|	├──01				# contains .wav files (raw data) of participant 01
-    |	|	├──...				# same for each of the participants
-    |	|	└──audioMNIST_meta.txt		# contains meta information on the participants							
-    |	└──...					# other files and folders are irrelevant
-    ├──results
-    |	├──evaluation
-    |	|	├──confusionMatrix_digit_0.csv	# contains the confusion matrix for label digit and fold 0
-    |	|	├──...				# same for each label and fold, additionally mean for each label
-    |	|	├──evalutation_digit_0.csv	# contains performance indicators (accuracy) for label digitand fold 0	
-    |	|	└──...				# same for each label and fold, additionally mean for each label
-    |	├──history
-    |	|	├──AlexNet_digit_0.pkl		# contains the history of label digit and fold 0
-    |	|	└──...				# same for each label and fold
-    |	├──models
-    |	|	├──AlexNet_digit_0.h5		# contains the model of label digit and fold 0
-    |	|	└──...				# same for each label and fold
-    |	├──plots
-    |	|	├──loss				# contains the loss plots as .png files
-    |	|	├──spectrograms			# contains the spectrograms as .png files
-    |	|	├──waveform			# contains the waveform plots as .png files
-    |	|	└──xai				# contains the explanations as .png files for Grad-CAM and LIME
-    |	└──predictions
-    |		├──predictions_digit_0.csv	# contains the predictions of label digit and fold 0
-    |		└──...				# same for each label and fold	
-    ├──spectrograms
-    |	├──01					# contains .hdf5 files (spectrograms) of participant 01
-    |	└──...					# same for each of the participants
-    ├──splits					# here: split = fold
-    |	├──AlexNet_digit_0_test.txt		# contains paths to spectrograms (.hdf5 files) for label digit, fold 0 and testsplit
-    |	└──...					# same for each label, fold and split
-    ├──01_Preprocessing_Training_Evaluation.ipynb	# script 1 contains code for downloading dataset, creating spectrograms (.hdf5 files), training models, 
-    ├──02_XAI_methods.ipynb				# script 2 contains code for creating outputs as .png files (waveform plots, spectrograms, Grad-CAM, LIME) 
-    ├──events.log					# contains logs, produced while running the code
-    ├──LICENSE
-    └──README.md
 
