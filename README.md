@@ -42,7 +42,10 @@ Contains a total of 10 genres, each genre contains 100 audio files
 10.Rock
 
 ## PART 1 BLACK BOX models training for MGR
-### GOAL:
+### GOAL: 
+In this PART are presented the use case we shoosed for audio classification followed
+by a precise description of the audio representations, EDA and audio prossesing using LIBROSA library for creating the data samples used as input in our proposed XAI technique and finally we present the neural network we implimented from scratch as a baseline, training phase of the
+network  and the pretrained VGG network using Tranfer learning, used as black-box model to produce the explanations
 
 ### Usage
 1. Clone or download this repository into your  root folder (if you use a subfolder, you have to adjust the root_path in the ipynb notebooks)
@@ -57,7 +60,12 @@ Contains a total of 10 genres, each genre contains 100 audio files
 - Transfer learning with VGG16
 
 ### Results
+Experiment results showed that validation accuracies and losses are similaire in both baseline and vgg model
 
+| Model | BASELINE    | VGG16    |
+| :---:   | :---: | :---: |
+| Accuracy | 0,95	| 0,93   |
+| LOSS | 0,25   | 0,24   |
 
 
 
@@ -77,9 +85,9 @@ SHAP (SHapley Additive exPlanations) is a game theoretic approach to explain the
 - You can use the notebook *Local_XAI_for_MGR_.ipynb* to plot and analyse the results.
 - Statistical results showed that SHAP MFCC features contribution correlations are more related to the modele predictions
 - We compared the XAI results and modele precision using mean contributions precision metric and in differnt iterations we found:
-- - Classifier: à.95
-- - SHAP: 0.86
-- - LIME: 0.70
+  - Classifier: à.95
+  - SHAP: 0.86
+  - LIME: 0.70
 - The experimental results do not show stronger attributions to classes using LIME this is because of its instable nature in nature (see report for more details).
 - Visual results can be prouved by choosing other parameters that are much relevent to the task ( see future work section in report).
 
@@ -89,7 +97,14 @@ SHAP (SHapley Additive exPlanations) is a game theoretic approach to explain the
 
 
 ## PART 3 ALE for globale XAI
+Accumulated local effects(ALE) aims to highlight the effects that a specific features have on the predictions of a machine learning model by partially isolating the effects of other features. The resulting ALE explanation is centered around the mean effect of the feature, such that the main feature effect is compared relative to the average prediction of the data.
+
 ### Usage
-
+- pip install ALE
+- converting the data from 2D to a 1D array by averaging the rows
 ### Results
+The experiments results show the Accumulated Local Effects (ALE) plots for the audio classification model trained on the music dataset for the respective features shosen by SHAP.
 
+
+So, in the plots (see ALE section in report) we can see how ALE shows the importance of feature at the class level by showing in which interval the feature is important for the respective class.
+In this way, Accumulated Local Effects (ALE) helps in looking at the effects that specific features have on the predictions of a machine learning model.
