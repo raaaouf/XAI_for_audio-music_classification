@@ -4,7 +4,7 @@ This repository contains the source code and implementation material for the pro
 
 The goal of our work is to implement an algorithm to explain the predictions of music recognition systems. The repository contains the code. Two versions of explanations (temporal and time-frequency) can be generated using the repository code. Details about the constituents of each XAI model and how to generate explanations is provided in the "Readme" file located at each sub-directory of the official implementations.
 
-This work is divided into three parts, each containing the results of the methodological phases discussed in the RTD. 
+This work is divided into three parts, each containing the results of the methodological phases . 
 
 
 Note: some code snippets were adopted or are based on other repositories/sources, which is stated in the concerned cells. 
